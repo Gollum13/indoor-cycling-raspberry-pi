@@ -37,3 +37,7 @@ For the magnetic sensor I use a door sensor PS-3150, but you can use anything el
 I'm using GPIO pin 13, which I set it as input pin. A cadence sensor is linked to this pin and VCC 3.3V pin
 
 ![Preview](https://github.com/Gollum13/indoor-cycling-raspberry-pi/blob/main/wiring.jpg)
+
+Attaching the sensor to the pedal is easy, use a double adhesive tape for the sensor itself, to stick it to the bike shell. Then just stick the neodimium magnets to the pedal, making sure the distance when crossing in front of the sensor is around 10 millimeters
+
+![Preview](https://github.com/Gollum13/indoor-cycling-raspberry-pi/blob/main/sensor-attach-to-pedal.jpg)
