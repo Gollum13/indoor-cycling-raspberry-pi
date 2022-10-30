@@ -3,6 +3,12 @@
 Revive your fitness bike by adding real world road trips: pedal in front of your TV or monitor, and promenade on the roads faster or slower according to your cycling speed. 
 No need for any trainer or app, you just need a fitness bike, a raspberry pi (any model), and a homemade cadence sensor (shown below)
 
+## How it works
+
+The idea behind this solution is to play a video file in VLC and control the frame rate (FPS) according to the speed we get from the pedal. In this matter, we build a simple cadence sensor, and attach it to one of the pedals. The sensor then sends the pulses on one GPIO input pin of Raspberry Pi, and then, based on the period we receive these pulses, we compute some speed. Finally, based on the value of the speed, we control VLC frame-rate
+
+Fortunatelly, to control video playing in VLC is quite simple, we just need to start its embedded telnet server, to which we send commands from the client script.
+
 ## Components
 - A fitness bike (I suppose you already have it)
 - A Raspberry Pi, any model above 2 (VLC should play smoothly on it)
@@ -18,12 +24,6 @@ No need for any trainer or app, you just need a fitness bike, a raspberry pi (an
 **vlc-client.py** -> starts the client script, which is doing everything we need: connects to VLC telnet server and sends framerate commands based on values reads from our cadence sensor
 
 **start.sh** -> the main script, which first starts the VLC server then the client script. This is the script you need to run. But before, you need to edit it and change the video file name and the seek value (the seconds you want to skip from the beginning of the file) 
-
-## How it works
-
-The idea behind this solution is to play a video file in VLC and control the frame rate (FPS) according to the speed we get from the pedal. In this matter, we build a simple cadence sensor, and attach it to one of the pedals. The sensor then sends the pulses on one GPIO input pin of Raspberry Pi, and then, based on the period we receive these pulses, we compute some speed. Finally, based on the value of the speed, we control VLC frame-rate
-
-Fortunatelly, to control video playing in VLC is quite simple, we just need to start its embedded telnet server, to which we send commands from the client script.
 
 ## DIY Cadence sensor
 
@@ -41,3 +41,5 @@ I'm using GPIO pin 13, which I set it as input pin. A cadence sensor is linked t
 Attaching the sensor to the pedal is easy, use a double adhesive tape for the sensor itself, to stick it to the bike shell. Then just stick the neodimium magnets to the pedal, making sure the distance when crossing in front of the sensor is around 10 millimeters
 
 ![Preview](https://github.com/Gollum13/indoor-cycling-raspberry-pi/blob/main/sensor-attach-to-pedal.jpg)
+
+The two wires coming out from the sensor can be connected to Raspberry Pi without taking in account any polarity, as the magnetic sensor internally is just a switch.
