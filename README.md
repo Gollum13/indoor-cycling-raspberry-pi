@@ -22,12 +22,14 @@ No need for any trainer or app, you just need a fitness bike, a raspberry pi (an
 ## How it works
 
 The idea behind this solution is to play a video file in VLC and control the frame rate (FPS) according to the speed we get from the pedal. In this matter, we build a simple cadence sensor, and attach it to one of the pedals. The sensor then sends the pulses on one GPIO input pin of Raspberry Pi, and then, based on the period we receive these pulses, we compute some speed. Finally, based on the value of the speed, we control VLC frame-rate
+
 Fortunatelly, to control video playing in VLC is quite simple, we just need to start its embedded telnet server, to which we send commands from the client script.
 
 ## DIY Cadence sensor
 
 The cadence sensor is the most important component, as it's attached to the pedal and "reads" the number of pedal rotations per minute.
 It's composed of a magnetic sensor (attached to bike's shell) and a neodimium magnet (attached to the pedal). 
+
 For the magnetic sensor I use a door sensor PS-3150, but you can use anything else, like the cheap KY-021
 
 ## Wiring
